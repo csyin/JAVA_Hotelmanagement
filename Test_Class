@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class HotelTest {
+    public static void main(String[] args) {
+        Hotel hotel =new Hotel();
+        System.out.println("欢迎您来到酒店房间管理系统");
+        System.out.println("请按照说明使用该系统：【1】表示显示房间信息，" +
+                "【2】表示订房， 【3】表示退房，  【4】表示退出系统");
+        while(true) {
+            Scanner s = new Scanner(System.in);
+            System.out.println("请您按照操作系统输入数字：");
+            int i = s.nextInt();
+            if (i == 1) {
+                hotel.print();
+            } else if (i == 2) {
+                System.out.println("请您输入需要订购的房间号：");
+                int RoomNumber = s.nextInt();
+                hotel.order(RoomNumber);
+            } else if (i == 3) {
+                System.out.println("请输入您需要退房的房间号：");
+                int RoomNumber = s.nextInt();
+                hotel.delete(RoomNumber);
+            } else if (i == 4) {
+                System.out.println("您将退出系统啦");
+                return;
+            } else {
+                System.out.println("您输入的信息有误，请按照说明继续进行操作");
+            }
+        }
+    }
+}
