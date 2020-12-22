@@ -1,0 +1,49 @@
+public class Hotel {
+    private Room[][] rooms;
+
+    public Hotel() {
+        rooms = new Room[3][10];
+        for (int i = 0; i < rooms.length; i++) {
+            for (int j = 0; j < rooms[i].length; j++) {
+                if (i == 0) {
+                    rooms[i][j] = new Room((i + 1) * 100 + j + 1, "单人间", true);
+          //          System.out.println(rooms.toString());
+                }
+                else if (i == 1) {
+                    rooms[i][j] = new Room((i + 1) * 100 + j + 1, "标准间", true);
+           //         System.out.println(rooms.toString());
+                }
+                else if (i == 2) {
+                    rooms[i][j] = new Room((i + 1) * 100 + j + 1, "总统套房", true);
+            //        System.out.println(rooms.toString());
+                }
+            }
+        }
+    }
+
+    public void print() {
+        for (int i=0;i<rooms.length;i++){
+            for(int j=0;j<rooms[i].length;j++){
+                Room room=rooms[i][j];
+                System.out.print(room);
+            }
+            System.out.println();
+        }
+    }
+
+    //定义订房服务
+    public void order(int RoomNumber){
+        System.out.println("你输入的房间号为：");
+        Room room =rooms[RoomNumber/100-1][RoomNumber%100-1];
+        room.setStatus(false);
+        System.out.println(room+"已订房");
+    }
+    //定义退房服务
+    public void delete(int RoomNumber){
+        System.out.println("您退房的房间号为：");
+        Room room= rooms[RoomNumber/100-1][RoomNumber%100-1];
+        room.setStatus(true);
+        System.out.println(room+"您退房成功");
+    }
+
+}
